@@ -6,7 +6,6 @@ this elk efficient guideline will lead you to a very cool and profesional _Elast
 
 **prerequisite:**
 
-------
 
 - docker
 
@@ -18,14 +17,13 @@ this elk efficient guideline will lead you to a very cool and profesional _Elast
 
 **checkout the project:**
 
-------
 
 - start git bash
 
 - cd into &#39;elk-workshop/manifest&#39; folder
 
   ```bash
-  cd elk-workshop/manifest&
+  cd elk-workshop/manifest
   ```
 
 - start docker-compose
@@ -40,7 +38,6 @@ this elk efficient guideline will lead you to a very cool and profesional _Elast
 
 **enable ES trial license:**
 
-------
 
 - lauch &#39;localhost:5601&#39;
 
