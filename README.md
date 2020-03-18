@@ -1,9 +1,12 @@
 # elkicient
+
 elk efficient
 
 
 
-prerequisite:
+**prerequisite:**
+
+------
 
 - docker
 
@@ -13,26 +16,36 @@ prerequisite:
 
 
 
-checkout the project:
+**checkout the project:**
 
-- checkout git project \&lt;here\&gt;
+------
 
 - start git bash
 
-- cd into &#39;elkcient/manifest&#39; folder
+- cd into &#39;elk-workshop/manifest&#39; folder
 
-- run &#39;docker-compose up -d&#39;
+  ```bash
+  cd &#39;elk-workshop/manifest&
+  ```
 
-note: _if there is a popup message that ask for access folder permission from docker, select &quot;Share it&quot;_
+- start docker-compose
+
+  ```
+  docker-compose up -d
+  ```
+
+  note: _if there is a popup message that ask for access folder permission from docker, select &quot;Share it&quot;_
 
 
 
 **enable ES trial license:**
 
+------
+
 - lauch &#39;localhost:5601&#39;
 
 - navigate to Management/Elasticsearch/License Management
 
-- click &quot;Start trial&quot; \&gt; &quot;Start my trial&quot;
+- click &quot;Start trial&quot; \> &quot;Start my trial&quot;
 
 you are ready now!
