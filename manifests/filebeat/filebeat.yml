@@ -1,0 +1,12 @@
+filebeat.inputs:
+- type: log
+  paths:
+    - /usr/logs/*
+    
+logging.metrics.enabled: false
+
+tail_files: true
+      
+# setup filebeat to send output to logstash
+output.logstash:
+  hosts: ["logstash:5044"]

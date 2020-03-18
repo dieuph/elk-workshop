@@ -1,0 +1,102 @@
+version: '3'
+
+services:
+  filebeat_1:
+    hostname: filebeat_1
+    image: elkicient/filebeat:6.5.2
+    container_name: filebeat_1
+    volumes:
+      - /usr/filebeat_1/logs:/usr/logs/
+    build:
+      context: filebeat
+      dockerfile: Dockerfile
+    links:
+      - logstash
+      
+  elkicient_app_1:
+    hostname: elkicient_app_1
+    image: elkicient/elkicient:1
+    container_name: elkicient_app_1
+    volumes:
+      - /usr/filebeat_1/logs:/home/gradle/project/logs
+    build:
+      context: applications
+      dockerfile: Dockerfile
+    environment:
+      - TEST_IP=85.214.125.128
+    ports: 
+      - "8088:8080"
+  
+  filebeat_2:
+    hostname: filebeat_2
+    image: elkicient/filebeat:6.5.2
+    container_name: filebeat_2
+    volumes:
+      - /usr/filebeat_2/logs:/usr/logs
+    build:
+      context: filebeat
+      dockerfile: Dockerfile
+    links:
+      - logstash
+      
+  elkicient_app_2:
+    hostname: elkicient_app_2
+    image: elkicient/elkicient:1
+    container_name: elkicient_app_2
+    volumes:
+      - /usr/filebeat_2/logs:/home/gradle/project/logs
+    build:
+      context: applications
+      dockerfile: Dockerfile
+    environment:
+      - TEST_IP=8.8.8.8
+    ports: 
+      - "8089:8080"
+      
+  logstash:
+    hostname: logstash
+    image: ws/logstash:6.5.2
+    container_name: logstash
+    build:
+      context: logstash
+      dockerfile: Dockerfile
+    volumes:
+      - ./logstash/logstash.conf:/usr/share/logstash/pipeline/logstash.conf
+      - ./logstash/logstash.yml:/usr/share/logstash/config/logstash.yml
+    environment:
+      LOG_LEVEL: info
+    ports:
+      - 5044:5044
+    links:
+      - elasticsearch
+      
+  elasticsearch:
+    container_name: elasticsearch
+    hostname: elasticsearch
+    image: elasticsearch:6.5.2
+    build:
+      context: elasticsearch
+      dockerfile: Dockerfile
+    environment:
+      - cluster.name=elasticsearch
+      - discovery.type=single-node
+      - bootstrap.memory_lock=true
+      - "ES_JAVA_OPTS=-Xms256m -Xmx256m"
+    ulimits:
+      memlock:
+        soft: -1
+        hard: -1
+    ports:
+      - 9200:9200
+    links:
+      - kibana
+      
+  kibana:
+    hostname: kibana
+    image: kibana:6.5.2
+    container_name: kibana
+    environment:
+      - "LOGGING_QUIET=true"
+      - "ELASTICSEARCH_URL=http://elasticsearch:9200"
+    ports:
+      - 5601:5601

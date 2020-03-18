@@ -1,0 +1,4 @@
+curl -X POST \
+     -H "Content-Type: application/json" \
+     -d '{ "log": { "level": "error", "message": "my error message", "context": "io" } }' \
+     http://localhost:8080/logs
