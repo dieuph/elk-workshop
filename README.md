@@ -1,26 +1,23 @@
-# elkicient
+# ELK Workshop
 
-this elk efficient guideline will lead you to a very cool and profesional _Elastic Stack_
+This elk efficient guideline will lead you to a very cool and professional _Elastic Stack_
 
 
 
-**prerequisite:**
-
+### 1. Prerequisite
 
 - docker
-
 - docker-compose
-
 - git bash
 
 
 
-**checkout the project:**
+### 2. Make it run
 
 
-- start git bash
+- start git bash and clone the repository
 
-- cd into &#39;elk-workshop/manifest&#39; folder
+- cd into &#39;elk-workshop/manifest&#39; directory
 
   ```bash
   cd elk-workshop/manifest
@@ -33,16 +30,3 @@ this elk efficient guideline will lead you to a very cool and profesional _Elast
   ```
 
   note: _if there is a popup message that ask for access folder permission from docker, select &quot;Share it&quot;_
-
-
-
-**enable ES trial license:**
-
-
-- lauch &#39;localhost:5601&#39;
-
-- navigate to Management/Elasticsearch/License Management
-
-- click &quot;Start trial&quot; \> &quot;Start my trial&quot;
-
-you are ready now!
