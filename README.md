@@ -1,6 +1,6 @@
 # elkicient
 
-elk efficient
+this elk efficient guideline will lead you to a very cool and profesional _Elastic Stack_
 
 
 
@@ -25,12 +25,12 @@ elk efficient
 - cd into &#39;elk-workshop/manifest&#39; folder
 
   ```bash
-  cd &#39;elk-workshop/manifest&
+  cd elk-workshop/manifest&
   ```
 
 - start docker-compose
 
-  ```
+  ```bash
   docker-compose up -d
   ```
 
